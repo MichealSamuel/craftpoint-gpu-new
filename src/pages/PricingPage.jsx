@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Check, X, Menu } from 'lucide-react';
+import { Link } from 'react-router-dom';  // ADD THIS LINE
 
 
 export default function PricingPage() {
