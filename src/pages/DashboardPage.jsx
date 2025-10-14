@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Menu, X, Activity, CreditCard, Server, Settings, LogOut, TrendingUp, Clock, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function DashboardPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -99,10 +99,7 @@ export default function DashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link to="/" className="text-gray-700 hover:text-gray-900">Home</Link>
-<Link to="/pricing" className="text-gray-700 hover:text-gray-900">Pricing</Link>
-<Link to="/support" className="text-gray-700 hover:text-gray-900">Support</Link>
-<Link to="/dashboard" className="text-gray-700 hover:text-gray-900">Dashboard</Link>
+              <Link to="/" className="text-2xl font-bold" style={{ color: '#C8102E' }}>CraftPoint GPU</Link>
             </div>
             
             <div className="hidden md:flex items-center space-x-4">
@@ -225,11 +222,11 @@ export default function DashboardPage() {
                 <p className="text-sm text-gray-600">Launch a new GPU compute job</p>
               </button>
               
-              <button className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow text-left">
+              <Link to="/pricing" className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow text-left block">
                 <TrendingUp className="w-8 h-8 mb-3" style={{ color: '#C8102E' }} />
                 <h4 className="font-semibold text-gray-900 mb-1">Upgrade Plan</h4>
                 <p className="text-sm text-gray-600">Get more GPU power</p>
-              </button>
+              </Link>
               
               <button className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow text-left">
                 <CreditCard className="w-8 h-8 mb-3" style={{ color: '#C8102E' }} />
@@ -288,12 +285,13 @@ export default function DashboardPage() {
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Current Subscription</h3>
                   <p className="text-gray-600">Professional Plan - $299/month</p>
                 </div>
-                <button
+                <Link
+                  to="/pricing"
                   className="px-4 py-2 rounded-lg text-sm font-semibold border-2 transition-colors"
                   style={{ borderColor: '#C8102E', color: '#C8102E' }}
                 >
                   Change Plan
-                </button>
+                </Link>
               </div>
               <div className="text-sm text-gray-600">
                 <p>Next billing date: November 1, 2025</p>
