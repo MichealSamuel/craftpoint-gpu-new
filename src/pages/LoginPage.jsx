@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Lock, Mail, Eye, EyeOff } from 'lucide-react';
+import { Menu, X, Lock, Mail, Eye, EyeOff } from 'lucide-react';
 
 export default function LoginPage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -20,37 +24,46 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate a login delay (no backend)
+    // Simulate fake login
     setTimeout(() => {
       console.log('Login successful:', formData);
       setIsLoading(false);
-      navigate('/'); // Redirect to home
+      navigate('/'); // ✅ Redirect to homepage after login
     }, 1000);
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Minimal Header */}
+    <div className="min-h-screen bg-gray-50">
+      {/* Simple Header */}
       <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold" style={{ color: '#C8102E' }}>
-            CraftPoint GPU
-          </Link>
-          <Link 
-            to="/signup"
-            className="px-6 py-2 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: '#C8102E' }}
-          >
-            Sign Up
-          </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+          <div className="flex items-center">
+            <h1 className="text-2xl font-bold" style={{ color: '#C8102E' }}>
+              CraftPoint GPU
+            </h1>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <Link to="/signup">
+              <button
+                className="px-6 py-2 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: '#C8102E' }}
+              >
+                Sign Up
+              </button>
+            </Link>
+          </div>
         </div>
       </nav>
 
-      {/* Login Section */}
-      <div className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
+      {/* Login Form */}
+      <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
         <div className="max-w-md w-full">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style={{ backgroundColor: '#FFF5F5' }}>
+            <div
+              className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4"
+              style={{ backgroundColor: '#FFF5F5' }}
+            >
               <Lock className="w-8 h-8" style={{ color: '#C8102E' }} />
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
@@ -84,7 +97,7 @@ export default function LoginPage() {
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
@@ -104,10 +117,18 @@ export default function LoginPage() {
 
               <div className="flex items-center justify-between mb-6">
                 <label className="flex items-center">
-                  <input type="checkbox" className="w-4 h-4 rounded border-gray-300" style={{ accentColor: '#C8102E' }} />
+                  <input
+                    type="checkbox"
+                    className="w-4 h-4 rounded border-gray-300"
+                    style={{ accentColor: '#C8102E' }}
+                  />
                   <span className="ml-2 text-sm text-gray-600">Remember me</span>
                 </label>
-                <Link to="/forgot-password" className="text-sm font-semibold hover:underline" style={{ color: '#C8102E' }}>
+                <Link
+                  to="/forgot-password"
+                  className="text-sm font-semibold hover:underline"
+                  style={{ color: '#C8102E' }}
+                >
                   Forgot password?
                 </Link>
               </div>
@@ -131,8 +152,12 @@ export default function LoginPage() {
 
             <div className="mt-6 text-center">
               <p className="text-gray-600">
-                Don’t have an account?{' '}
-                <Link to="/signup" className="font-semibold hover:underline" style={{ color: '#C8102E' }}>
+                Don't have an account?{' '}
+                <Link
+                  to="/signup"
+                  className="font-semibold hover:underline"
+                  style={{ color: '#C8102E' }}
+                >
                   Sign up for free
                 </Link>
               </p>
@@ -142,9 +167,13 @@ export default function LoginPage() {
           <div className="mt-8 text-center text-sm text-gray-500">
             <p>
               By logging in, you agree to our{' '}
-              <Link to="/terms" className="hover:underline" style={{ color: '#C8102E' }}>Terms of Service</Link>
-              {' '}and{' '}
-              <Link to="/privacy" className="hover:underline" style={{ color: '#C8102E' }}>Privacy Policy</Link>
+              <Link to="/terms" className="hover:underline" style={{ color: '#C8102E' }}>
+                Terms of Service
+              </Link>{' '}
+              and{' '}
+              <Link to="/privacy" className="hover:underline" style={{ color: '#C8102E' }}>
+                Privacy Policy
+              </Link>
             </p>
           </div>
         </div>
